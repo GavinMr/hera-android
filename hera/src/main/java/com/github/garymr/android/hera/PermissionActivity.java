@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.WindowManager;
 
 import java.util.LinkedList;
@@ -26,8 +27,7 @@ public class PermissionActivity extends Activity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                           int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         HeraUtil.logD("onRequestPermissionsResult");
         List<String> grantedPermissions = new LinkedList<>();
         List<String> deniedPermissions = new LinkedList<>();

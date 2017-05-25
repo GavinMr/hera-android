@@ -55,6 +55,8 @@ public class SampleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Hera.setDebugEnabled(true);
+
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +75,11 @@ public class SampleActivity extends Activity {
                     return;
                 }
                 // 如果没有特殊处理listener也可以不传入
-                Hera.requestPermission(v.getContext(), null, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.WRITE_SETTINGS, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                Hera.requestPermission(v.getContext(), null,
+                        Manifest.permission.SYSTEM_ALERT_WINDOW,
+                        Manifest.permission.WRITE_SETTINGS,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
             }
         });
 

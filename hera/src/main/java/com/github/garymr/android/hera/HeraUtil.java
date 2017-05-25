@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.PowerManager;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -41,6 +42,10 @@ public final class HeraUtil {
             } else if (TextUtils.equals(Manifest.permission.WRITE_SETTINGS, permission)) {
                 return Settings.System.canWrite(context) ?
                         PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED;
+            } else if (TextUtils.equals(Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, permission)) {
+                PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+                return pm.isIgnoringBatteryOptimizations(context.getPackageName()) ?
+                        PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED;
             }
         }
 
@@ -71,6 +76,15 @@ public final class HeraUtil {
                     activity.startActivityForResult(intent, Hera.PERMISSIONS_REQUEST_CODE_WRITE_SETTINGS);
                 } catch (Exception e) {
                     HeraUtil.logW("request WRITE_SETTINGS permission failure.", e);
+                    normalPermissions.add(permission);
+                }
+            } else if (TextUtils.equals(permission, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)) {
+                try {
+                    Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                            Uri.parse("package:" + activity.getPackageName()));
+                    activity.startActivityForResult(intent, Hera.PERMISSIONS_REQUEST_CODE_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                } catch (Exception e) {
+                    HeraUtil.logW("request REQUEST_IGNORE_BATTERY_OPTIMIZATIONS permission failure.", e);
                     normalPermissions.add(permission);
                 }
             } else {

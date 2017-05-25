@@ -21,6 +21,7 @@ public final class Hera {
     static final int PERMISSIONS_REQUEST_CODE = 80;
     static final int PERMISSIONS_REQUEST_CODE_SYSTEM_ALERT_WINDOW = 81;
     static final int PERMISSIONS_REQUEST_CODE_WRITE_SETTINGS = 82;
+    static final int PERMISSIONS_REQUEST_CODE_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS = 83;
 
     private static final AtomicBoolean isRequestingPermission = new AtomicBoolean(false);
     private static final AtomicBoolean isRequestingRationalePermission = new AtomicBoolean(false);
@@ -271,6 +272,9 @@ public final class Hera {
             } else if (requestCode == PERMISSIONS_REQUEST_CODE_WRITE_SETTINGS) {
                 permissions.add(Manifest.permission.WRITE_SETTINGS);
                 permission = HeraUtil.checkSelfPermission(activity, Manifest.permission.WRITE_SETTINGS);
+            } else if (requestCode == PERMISSIONS_REQUEST_CODE_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) {
+                permissions.add(Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                permission = HeraUtil.checkSelfPermission(activity, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
             }
 
             if (permission == null) {
