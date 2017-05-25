@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'garymr'
+    groupId = 'com.github.garymr.android'
+    artifactId = 'hera'
+    publishVersion = '1.0.0'
+    desc = 'Simple runtime permission manager for Android.'
+    website = 'https://github.com/GaryMr/hera-android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    compileOptions {
+        encoding = rootProject.ext.encoding
+        sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility = rootProject.ext.targetCompatibilityVersion
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    provided "com.android.support:support-fragment:${SUPPORT_LIB_VERSION}"
+}
