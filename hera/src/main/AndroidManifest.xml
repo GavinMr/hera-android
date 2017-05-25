@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.garymr.android.hera">
+
+    <application>
+        <activity
+            android:name="com.github.garymr.android.hera.PermissionActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Hera.Theme.Transparent" />
+    </application>
+
+</manifest>
