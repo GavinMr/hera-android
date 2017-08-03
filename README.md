@@ -84,7 +84,6 @@ Hera.requestPermission(v.getContext(), null,
 
 ```
 Hera.setDebugEnabled(true);
-
 ```
 
 ## License
