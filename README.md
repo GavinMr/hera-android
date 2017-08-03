@@ -8,7 +8,7 @@ Hera 提供简单易用的Android运行时权限管理。
 
 ```
 dependencies {
-	compile 'com.github.garymr.android:hera:1.0.1'
+   compile 'com.github.garymr.android:hera:1.0.1'
 }
 ```
 
@@ -16,9 +16,9 @@ dependencies {
 
 ```
 <dependency>
-  <groupId>com.github.garymr.android</groupId>
-  <artifactId>hera</artifactId>
-  <version>1.0.1</version>
+   <groupId>com.github.garymr.android</groupId>
+   <artifactId>hera</artifactId>
+   <version>1.0.1</version>
 </dependency>
 ```
 
@@ -67,7 +67,9 @@ PermissionListener permissionListener = new PermissionListener() {
 };
 
 Hera.requestPermission(v.getContext(), permissionListener,
-                        Manifest.permission.WAKE_LOCK, Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                        Manifest.permission.WAKE_LOCK,
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
 // 如果没有特殊处理listener也可以不传入
 Hera.requestPermission(v.getContext(), null,
@@ -77,8 +79,6 @@ Hera.requestPermission(v.getContext(), null,
         Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
 
 ```
-
-* 如果不初始化将会使用默认配置，TAG 为：LOGGER*
 
 ### 开启调试状态
 
